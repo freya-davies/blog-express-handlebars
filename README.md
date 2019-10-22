@@ -40,5 +40,34 @@ Both of these routes are accessed using "GET" requests. They are essentially req
     - For more info: https://www.w3schools.com/tags/ref_httpmethods.asp 
 
 ## Setup Blog Routes
+1. Time to set up your own blog. Copy your own blog html files into this repository. Make sure to also include your CSS files and any images you might have used, otherwise they will not display!
+    - This is how I have set up my project. Feel free to follow this layout, or create your own.
+        -> project folder
+        ---> 'blog' folder (containing individual blog html files)
+        ------> 'sprint1-cultural.html'
+        ------> 'sprint2-cultural.html'
+        ------> ...
+        ---> 'styles' folder
+        ------> 'main.css'
+        ---> 'images' folder
+        ------> (all images go in here)
+        ---> index.html (website home page)
+        ---> server.js
+        ---> index.js
+        ...
+2. First lets alter the home ("/") route to deliver our 'index.html' file, instead of just "Home Page"
+    - hint: ```res.render()``` instead of ```res.send()```
+3. Next we need to display each individual blog post. Writing a separate route for each of these files would make our server code super long, so lets use Route Parameters
+    ``` 
+    server.get("/blog/cultural:id", (req, res) => {
+        // use 'id' to dictate which file you want to send back to the sender
+    })
+    ```
+4. Don't forget to change your ```<a href>``` links in all of your files!
+    - E.g. you could now change ```href="../blog/sprint1-cultural.html"``` to ```href="/cultural/1```
+    - This will allow you to render your files based on ROUTES, rather than having to specify the exact filename in each of your files
+5. Make sure all your html files have been imported into the project, and can be displayed by visiting their specific route. Feel free to use the example above, or implement your own solution.
+    - If your folder structure in this project is different to the one in your original project, you may need to update any links/references to other files!
+6. Congrats! Hopefully by this stage, you should have a server displaying 
 
 
