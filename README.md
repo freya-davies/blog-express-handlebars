@@ -111,7 +111,7 @@ Handlebars allows us our html to have more flexibility
 5. Run your server again. Your blog website should look just the same as it did before adding handlebars
 
 ## Handlebars Layouts
-1. A large amount of the code in our ".hbs" files is repeated! The html set-up of each of the files is likely near-identical amongst each of our blog posts. Using LAYOUTS allows us to minimise this repititon
+1. A large amount of the code in our ".hbs" files is repeated! The html set-up of each of the files is likely near-identical amongst each of our blog posts. Using LAYOUTS allows us to minimise this repetiton
 2. First we need to configure handlebars to have a default layout. In the below example, I have set the default layout file to be called "main"
     - NB: "main" will be an hbs file -> aka "main.hbs"
     ```

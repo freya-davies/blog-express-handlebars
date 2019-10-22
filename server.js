@@ -3,9 +3,10 @@
 // Import packages into our file
 const express = require('express')
 
-// Set up express server + express middleware
+// Set up express server
 const server = express()
-server.use(express.static('public'))
+
+// Serve static files
 
 // Set up routes
 // server.get('/', (req, res) => {
