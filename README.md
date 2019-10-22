@@ -9,9 +9,13 @@ Let's write our EDA blogs with Express.js and Handlebars.js.
         git checkout -b <your-name-here>
         ```    
     - Option B: Fork the repository and then pull it down to your computer
-        ```git clone <your-repository-name-here>```
+        ```
+        git clone <your-repository-name-here>
+        ```
 2. Use npm to install packages
-    ```npm install```
+    ```
+    npm install
+    ```
 3. Add a .gitignore file so you don't upload your node_modules
     ```
     touch .gitignore
@@ -30,14 +34,13 @@ Let's write our EDA blogs with Express.js and Handlebars.js.
 
 ## Express Routes
 1. Express allows us to display data based on the url we are accessing in our browser. We do this using ROUTES.
-2. Look at the "server.js" file, and uncomment the code under "Set up routes". Then refresh your browser
-    - We are now sending "Home Page" back to the browser when we visit the "/"
+2. Look at the server.js file, and uncomment the code under "Set up routes". Then refresh your browser
+    - We are now sending "Home Page" back to the browser when we visit the "/" route
     - We send "Blog page" back to the browser when we visit the "/blog" route
 
 More about routes:
 * "/" is commonly referred to as the "home route". When we access this, we are visiting http://localhost:3000
 * "/blog" will be the route at which we place our blog. When we access this, we are visiting http://localhost:3000/blog
-* NB: this may end up being slightly different for you, depending on how you have set up your EDA blog previously. Feel free to change this to something that works for you!
 
 Both of these routes are accessed using "GET" requests. They are essentially requesting data from a specified resource. They then respond to that according to the code we write (e.g. ```res.send()```, ```res.render()```)
 * For more info: https://www.w3schools.com/tags/ref_httpmethods.asp 
@@ -64,7 +67,7 @@ Both of these routes are accessed using "GET" requests. They are essentially req
     - hint: ```res.render()``` instead of ```res.send()```
 3. Next we need to display each individual blog post. Writing a separate route for each of these files would make our server code super long, so lets use Route Parameters. See the example below (but feel free to solve this in your own way!):
     ``` 
-    server.get("/blog/cultural:id", (req, res) => {
+    server.get("/blog/cultural/:id", (req, res) => {
         // use 'id' to dictate which file you want to send back to the sender
     })
     ```
