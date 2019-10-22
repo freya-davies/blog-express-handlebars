@@ -19,7 +19,7 @@ Let's write our EDA blogs with Express.js and Handlebars.js.
 3. Add a .gitignore file so you don't upload your node_modules
     ```
     touch .gitignore
-    echo node_modules > .gitignore
+    echo node_modules > .gitignore // this will insert the text "node_modules" inside your .gitignore file
     ```
 
 ## Setup Express Server
@@ -42,7 +42,7 @@ More about routes:
 * "/" is commonly referred to as the "home route". When we access this, we are visiting http://localhost:3000
 * "/blog" will be the route at which we place our blog. When we access this, we are visiting http://localhost:3000/blog
 
-Both of these routes are accessed using "GET" requests. They are essentially requesting data from a specified resource. They then respond to that according to the code we write (e.g. ```res.send()```, ```res.render()```)
+Both of these routes are accessed using "GET" requests. They are essentially requesting data from a specified resource. They then respond to that according to the code we write (e.g. ```res.send()```, ```res.render()```). There are other types of requests, but we will not be covering them here in this project.
 * For more info: https://www.w3schools.com/tags/ref_httpmethods.asp 
 
 ## Setup Blog Routes
@@ -78,4 +78,67 @@ Both of these routes are accessed using "GET" requests. They are essentially req
     - If your folder structure in this project is different to the one in your original project, you may need to update any links/references to other files!
 6. Congrats! Hopefully by this stage, you should have an express server displaying your blog!
 
+## Set Up Handlebars
+Handlebars allows us our html to have more flexibility
+- It allows us to use layouts and partials to create more modular html 
+    - This allows for more flexibility when building up html files, and also can reduce repeated code
+- It allows us to use some javascript-like functionality when rendering our pages (e.g. if/else statements, passing variables into our pages)
 
+1. First we need to import the 'express-handlebars' package into our server.js file
+    ```
+    const hbs = require('express-handlebars')
+
+    ```
+2. Next we need to set up the handlebars middleware
+    - "server.engine" sets up our "hbs" template engine to look for ".hbs" files
+    - "server.set" tells our server to use the "hbs" template engine
+    ```
+    server.engine('hbs', hbs({
+        extname: 'hbs',
+    }))
+    server.set('view engine', 'hbs')
+    ```
+3. We have now configured express-handlebars to expect all templated files to end with ".hbs". Express-handlebars also expects to find all the ".hbs" files within a "views" folder. 
+    - We now need to create a "views" folder, and place all of our html files within it
+    - We also need to change the ".html" to ".ejs" for each of these files!!
+4. We now need to modify our express routes - they now need to render .hbs files (instead of .html files)
+    - Note we do not need to write ".hbs" at the end of the file names. Just "index" will work fine. Go handlebars!
+    ```
+    server.get('/', (req, res) => {
+        res.render("index")
+    })
+    ```
+5. Run your server again. Your blog website should look just the same as it did before adding handlebars
+
+## Handlebars Layouts
+1. A large amount of the code in our ".hbs" files is repeated! The html set-up of each of the files is likely near-identical amongst each of our blog posts. Using LAYOUTS allows us to minimise this repititon
+2. First we need to configure handlebars to have a default layout. In the below example, I have set the default layout file to be called "main"
+    - NB: "main" will be an hbs file -> aka "main.hbs"
+    ```
+    server.engine('hbs', hbs({
+        extname: 'hbs',
+        defaultLayout: 'main'
+    }))
+    ```
+3. Time to add our layout. Within the "views" folder, make another folder called "layouts"
+4. Within the "layouts" folder, create a new document called "main.hbs"
+5. Copy and paste one of your blog pages into this new file. If you delete the part where you actually write the blog, you will find that there is a large html skeleteon left over!
+6. We can dynamically update the content inside this html skeleton/layout by using ```{{{body}}}```
+    - Replace the blog post with ```{{{body}}}```, as shown in the example below
+    ```
+    <html>
+        <head> 
+            <other-code-here> 
+        </head>
+        <body>
+            <other-code-here> 
+
+            {{{body}}}
+
+            <other-code-here> 
+        </body>
+    </html>
+    ```
+7. Now we can modify our blog post files ("the files that are within our "views" folder)
+    - For each of these files, we can delete everything except the blog post! (Or more specifically - we can delete everything that is contained within our "main.hbs" file)
+8. Restart the server and visit your routes. They should all look the same as before! But we have now significantly reduced the number of lines of code in our project.
