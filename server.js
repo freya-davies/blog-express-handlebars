@@ -7,6 +7,7 @@ const express = require('express')
 const server = express()
 
 // Serve static files
+server.use(express.static('public'))
 
 // Set up routes
 server.get('/', (req, res) => {
