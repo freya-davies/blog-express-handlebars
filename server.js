@@ -18,18 +18,18 @@ server.use(express.static('public'))
 
 // Set up routes
 server.get('/', (req, res) => {
-    res.sendFile(__dirname + "/views/index.html")
+    res.render("index")
 })
 
 server.get('/blog', (req, res) => {
-    res.sendFile(__dirname + "/views/blog/blog.html")
+    res.render("blog/blog")
 })
 
 server.get('/blog/cultural/:blogNumber', (req, res) => {
     let blogNumber = req.params.blogNumber
 
     if (blogNumber <= 5) {
-        res.sendFile(__dirname + "/views/blog/sprint" + blogNumber + "-cultural.html")
+        res.render("blog/sprint" + blogNumber + "-cultural")
     }
     else {
         res.send("File does not exist")
@@ -39,7 +39,7 @@ server.get('/blog/cultural/:blogNumber', (req, res) => {
 server.get('/blog/technical/:blogNumber', (req, res) => {
     let blogNumber = req.params.blogNumber
     if (blogNumber <= 4) {
-        res.sendFile(__dirname + "/views/blog/sprint" + blogNumber + "-technical.html")
+        res.render("blog/sprint" + blogNumber + "-technical")
     }
     else {
         res.send("File does not exist")
