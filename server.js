@@ -9,13 +9,13 @@ const server = express()
 // Serve static files
 
 // Set up routes
-// server.get('/', (req, res) => {
-//     res.send("Home Page")
-// })
+server.get('/', (req, res) => {
+    res.send("Home Page")
+})
 
-// server.get('/blog', (req, res) => {
-//     res.send("Blog Page")
-// })
+server.get('/blog', (req, res) => {
+    res.send("Blog Page")
+})
 
 // Exports our server for use elsewhere
 module.exports = server
