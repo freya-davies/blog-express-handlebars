@@ -7,6 +7,12 @@ const hbs = require('express-handlebars')
 // Set up express server
 const server = express()
 
+// Handlebars middleware
+server.engine('hbs', hbs({
+    extname: 'hbs',
+}))
+server.set('view engine', 'hbs')
+
 // Serve static files
 server.use(express.static('public'))
 
