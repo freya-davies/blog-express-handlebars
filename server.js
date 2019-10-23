@@ -11,7 +11,7 @@ server.use(express.static('public'))
 
 // Set up routes
 server.get('/', (req, res) => {
-    res.send("Home Page")
+    res.sendFile(__dirname + "/index.html")
 })
 
 server.get('/blog', (req, res) => {
