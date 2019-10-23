@@ -19,7 +19,7 @@ server.use(express.static('public'))
 
 // Set up routes
 server.get('/', (req, res) => {
-    res.render("index")
+    res.render("index", {layout: "home.hbs"})
 })
 
 server.get('/blog', (req, res) => {
