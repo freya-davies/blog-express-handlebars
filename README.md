@@ -2,10 +2,10 @@
 Let's write our EDA blogs with Express.js and Handlebars.js.
 
 Please note:
-- This is my approach to converting a blog site - there will be many other ways of doing this!
+- This is my approach to converting the EDA blog site - there will be many other ways of doing this!
 - This approach may work better/worse for you, depending on how you have set up your initial blog website
 - You can view how I implemented this with my EDA blog by checking out the branch "cherise-blog"
-    - Feel free to check this out if you want to get a better idea of how I implemented the steps
+    - You can see how I implemented the steps by checking out the changes made with each commit
     - Or come ask me questions directly! 
 - Also feel free to give feedback - either let me know directly, raise an issue, or even create a pull request!
 - This does not include tests! This is designed to be an exercise focused on getting more comfortable with express and handlebars. Feel free to add your own test suite!
@@ -25,11 +25,6 @@ Please note:
 2. Use npm to install packages
     ```
     npm install
-    ```
-3. Add a .gitignore file so you don't upload your node_modules
-    ```
-    touch .gitignore
-    echo node_modules > .gitignore // this will insert the text "node_modules" inside your .gitignore file
     ```
 
 ## Express
@@ -61,15 +56,20 @@ Both of these routes are accessed using "GET" requests. They are essentially req
     - This is how I have set up my project. Feel free to follow this layout, or create your own.
     ```
         -> project folder
-        ---> 'blog' folder (containing individual blog html files)
-        ------> 'sprint1-cultural.html'
-        ------> 'sprint2-cultural.html'
-        ------> ...
+        ---> 'views' folder
+        ------> 'blog' folder (containing individual blog html files)
+        ---------> 'blog.html'
+        ---------> 'sprint1-cultural.html'
+        ---------> 'sprint2-cultural.html'
+        ---------> ...
+        ------> 'index.html'
         ---> 'public' folder
         ------> 'styles' folder
         ---------> 'main.css'
         ------> 'images' folder
         ---------> (all images go in here)
+        ------> 'javascript' folder
+        ---------> 'main.js'
         ---> index.html (website home page)
         ---> server.js
         ---> index.js
@@ -81,12 +81,12 @@ Both of these routes are accessed using "GET" requests. They are essentially req
     server.use(express.static('public'))
     ```
     - This code tells express to look for static files inside a folder called "public"
-3. Make sure your static files are all contained a folder named "public" 
+3. Make sure your static files are all contained within a folder named "public" 
     - See the above suggested layout for an example of this
 
 ### Setup for Express Routes
 1. First let's alter the home ("/") route to deliver our 'index.html' file, instead of just writing "Home Page"
-    - hint: ```res.render()``` instead of ```res.send()```
+    - hint: ```res.sendFile(__dirname + <file-name-here>)``` instead of ```res.send()```
 2. Next we need to display each individual blog post. Writing a separate route for each of these files would make our server code super long, so lets use Route Parameters. See the example below (but feel free to solve this in your own way!):
     ``` 
     server.get("/blog/cultural/:id", (req, res) => {
@@ -96,25 +96,34 @@ Both of these routes are accessed using "GET" requests. They are essentially req
 3. Don't forget to change your ```<a href>``` links in all of your files!
     - E.g. you could now change ```href="../blog/sprint1-cultural.html"``` to ```href="/cultural/1```
     - This will allow you to render your files based on ROUTES, rather than having to specify the exact filename in each of your files
+4. You will also need to modify your links to your static files: CSS, images and HTML (as they are all now within the "public" folder!). For example:
+    ```
+    <link rel="stylesheet" href="../styles/main.css">
+        //  /\ 
+        //  ||
+        //  should be modified to 
+        //  ||
+        //  \/
+    <link rel="stylesheet" href="/styles/main.css">
+    ```
 4. Make sure all your files have been imported into this new project, and that they can be viewed by visiting their specific route. Feel free to use the example above, or implement your own solution.
     - If your folder structure in this project is different to the one in your original project, you may need to update any links/references to other files!
 5. Congrats! Hopefully by this stage, you should have an express server displaying your blog!
 
 ## Handlebars
 ### Set Up Handlebars
-Handlebars allows us our html to have more flexibility
-- It allows us to use layouts and partials to create more modular html 
-    - This allows for more flexibility when building up html files, and also can reduce repeated code
-- It allows us to use some javascript-like functionality when rendering our pages (e.g. if/else statements, passing variables into our pages)
+Handlebars allows our HTML to have more flexibility
+- It allows us to use layouts and partials to create more modular HTML 
+    - This allows for more flexibility when building up HTML files, and can also reduce repeated code
+- It also allows us to use some javascript-like functionality when rendering our pages (e.g. if/else statements, passing variables into our pages)
 
 1. First we need to import the 'express-handlebars' package into our server.js file
     ```
     const hbs = require('express-handlebars')
-
     ```
-2. Next we need to set up the handlebars middleware
-    - "server.engine" sets up our "hbs" template engine to look for ".hbs" files
-    - "server.set" tells our server to use the "hbs" template engine
+2. Next we need to set up the handlebars middleware. Add the following code into your server.js file
+    - "server.engine" sets up our 'hbs' template engine to look for '.hbs' files
+    - "server.set" tells our server to use the 'hbs' template engine
     ```
     server.engine('hbs', hbs({
         extname: 'hbs',
@@ -122,16 +131,16 @@ Handlebars allows us our html to have more flexibility
     server.set('view engine', 'hbs')
     ```
 3. We have now configured express-handlebars to expect all templated files to end with ".hbs". Express-handlebars also expects to find all the ".hbs" files within a "views" folder. 
-    - We now need to create a "views" folder, and place all of our html files within it
+    - Make sure all your html files are inside a "views" folder
     - We also need to change the ".html" to ".ejs" for each of these files!!
 4. We now need to modify our express routes - they now need to render .hbs files (instead of .html files)
-    - Note we do not need to write ".hbs" at the end of the file names. Just "index" will work fine. Go handlebars!
+    - We need to change our ```res.sendFile()``` methods to ```res.render()``` methods
+    - Note we do not need to write ".hbs" at the end of the file names. We also don't need to specify ```__dirname```, as handlebars knows to look inside the 'views' folder. Go handlebars! 
     ```
     server.get('/', (req, res) => {
         res.render("index")
     })
     ```
-5. Run your server again. Your blog website should look just the same as it did before adding handlebars
 
 ### Handlebars Layouts
 1. A large amount of the code in our ".hbs" files is repeated! The html set-up of each of the files is likely near-identical amongst each of our blog posts. Using LAYOUTS allows us to minimise this repetiton
@@ -164,7 +173,6 @@ Handlebars allows us our html to have more flexibility
     ```
 7. Now we can modify our blog post files (the files that are within our "views" folder)
     - For each of these files, we can delete everything except the blog post! (Or more specifically - we can delete everything that is contained within our "main.hbs" file)
-8. Restart the server and visit your routes. They should all look the same as before! But we have now significantly reduced the number of lines of code in our project.
 
 #### Additional Layouts
 1. It is possible to have more than one layout file!! In my case, the layout of my home page is actually different to my blog pages (it has a different "header" layout) - so just rendering this page within the "main" template won't work for me!
@@ -177,6 +185,8 @@ Handlebars allows us our html to have more flexibility
       res.render("index", { layout: "home.hbs" })
     }
     ```
+
+#### Restart the server and visit your routes. They should all look the same as before! But we have now significantly reduced the number of lines of code in our project.
 
 ### Handlebars Partials
 1. Partials allow us to write reusable small blocks of code - thus minimising redundant code within our files. In this example, we will create "header" and "footer" partials, which can then be inserted into our files.
@@ -200,17 +210,17 @@ Handlebars allows us our html to have more flexibility
 4. Within the "views" folder, create a new folder called "partials" 
 5. Create a new partial (file) within this folder called "footer.hbs', and transfer the code from the "footer" section of your template file into this partial.
 6. You can then require this partial into the footer section, in the place where the footer code used to live
-    ```{{> header}}
-7. Repeat the above steps for your headers. If you have a similar layout to mine, you might need a "main-header.hbs" and a "home-header.hbs" file. If your hader is the same across all of your files, you might need only a single "header.hbs" file
+    ```{{> footer}}```
+7. Repeat the above steps for your headers. If you have a similar layout to mine, you might need a "main-header.hbs" and a "home-header.hbs" file. If your header is the same across all of your files, you might need only a single "header.hbs" file
 8. Require the relevant partials into your templates. 
     - My "main.hbs" file now looks like this:
-        ```
+    ```
     <html>
         <head> 
             ...
         </head>
         <body>
-            {{main-header}} // NB: in the "home.js" file, this will instead say {{home-header}}
+            {{main-header}} // NB: in the "home.js" file, this instead says {{home-header}}
 
             {{{body}}}
 
@@ -220,4 +230,4 @@ Handlebars allows us our html to have more flexibility
     ```
 9. Now visit http://localhost:3000. Your blog site should be displaying!!
 
-## Congrats! You now have built a blog site with express and handlebars!
+### Congrats! You now have built a blog site with express and handlebars!
