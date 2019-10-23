@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EDA Blog</title>
+    <!-- Bulma CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <section class="blog-heading">
+        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="../index.html">Home</a>
+                    <a class="navbar-item" href="../views/blog.html">Blog</a>
+                </div>
+                <div class="navbar-end"></div>
+            </div>
+        </nav>
+    </section>
+
+    <section id="blog-posts">
+        <h1 class="title is-4 padding-1">Problem Solving</h1>
+        <h2 class="subtitle is-5 padding-0"><em>16 September 2019</em> </h2>
+
+        <div class="blog-posts-body">
+            <h3 class="title is-6">Describe a time you got blocked on a simple problem and solved it in an elegant way
+            </h3>
+            <p class="padding-bottom-2">
+                A problem that comes to mind is the <em>deBee()</em> function from the Built-In Methods kata.
+            </p>
+            <p class="padding-bottom-1">
+                Step 1 was to inspect the string that was passed to the function. This was important to get some idea
+                about the data that I was dealing with. <code>console.log(str)</code> revealed
+                strings containing multiple "buzz" words.
+            </p>
+            <p class="padding-bottom-1">
+                Step 2 was to write some pseudocode. First I needed to convert the string to an array, allowing me
+                to use the inbuilt JavaScript <code>array.filter()</code> method to filter out all the "buzz" words.
+                Console.logging had revealed that some of the "buzz" words had different capitalisation (e.g. BUzz,
+                BuZZ) - so I needed to find some way to account for this (as 'B' and 'b' will be evaluated as
+                different characters when it comes to comparing for equality). Then I would need to convert the array
+                back into a string to fulfill the test requirements.
+
+            </p>
+            <p class="padding-bottom-1">
+                Step 3 was googling. I needed to work out how to actually use the <code>array.filter()</code> function.
+                I considered using a regular expression to account for case sensitivity, but ultimately decided
+                it was simpler to just convert the entire word to lowercase - i.e. <code>word.toLowerCase()</code>
+
+            </p>
+            <p class="margin-bottom">
+                Step 4 - actually write the code! By planning out my solution over the previous steps, I was
+                actually able to solve the problem quite simply.
+            </p>
+            <div class="margin-bottom">
+                <img src="../images/debee.JPG" alt="code-snippet" class="tech-blog-4-img">
+            </div>
+
+
+            <h3 class="title is-6">My Favourite Problem Solving Techniques</h3>
+            <p class="padding-bottom-2">
+                <b>Trying something</b>: This is typically my first port of call when I encounter a problem. If I have a
+                hunch about how to solve something (and the problem is relatively simple), I will just go ahead and try
+                to
+                implement my hypothesis. If this doesn't work, the problem is a bit more complicated, or I have no idea
+                how to approach it - it's time to move on to using one or more of the following techniques!
+            </p>
+            <p class="padding-bottom-2">
+                <b>Pseudocode</b>: I really like using pseudocode to break down a problem when I don't see an immediate
+                answer; it is particularly great when you don't really know what methods/functions you need to use
+                to solve the problem. Once you have broken the solution down into stages, you can then google how to
+                solve
+                each particular step (e.g. how to capitalise a string using JavaScript).
+            </p>
+            <p class="padding-bottom-2">
+                <b>Googling</b>: Google is your friend. It is the first place I turn to when I need help with figuring
+                out a problem. Blog posts on Medium are awesome for a more conceptual overview of how to approach a
+                particular problem, while Stack Overflow is great for more specific code queries.
+            </p>
+            <p class="margin-bottom">
+                <b>Console.logging</b>: I find this to be a great way to test what your code is doing at each step - and
+                make sure it is actually doing what you think it is doing! It is also very helpful when trying to figure
+                out why your code isn't working.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <span class="icon is-large"><a class="fab fa-2x fa-github" target="_blank"
+                    href="https://github.com/cherise-tan"></a></span>
+            <span class="icon is-large"><a class="fab fa-2x fa-linkedin-in" target="_blank"
+                    href="https://www.linkedin.com/in/cherise-tan/"></a></span>
+            <span class="icon is-large"><a class="fas fa-2x fa-envelope" href="mailto:cherisetan@live.com"></a></span>
+        </div>
+    </footer>
+
+    <!-- Javascript -->
+    <script src="../javascript/main.js"></script>
+
+</body>
+
+</html>
