@@ -2,6 +2,7 @@
 
 // Import packages into our file
 const express = require('express')
+const hbs = require('express-handlebars')
 
 // Set up express server
 const server = express()
