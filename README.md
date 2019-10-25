@@ -15,7 +15,7 @@ Please note:
 1. There are two options for setup:
     - Option A: Clone the repository down to your computer, and create (and navigate into) your own branch
         ```
-        git clone https://github.com/cherise-tan/blog-express-handlebars.git
+        git clone https://github.com/hihi-2019/blog-express-handlebars.git
         git checkout -b <your-name-here>
         ```    
     - Option B: Fork the repository and then pull it down to your computer
