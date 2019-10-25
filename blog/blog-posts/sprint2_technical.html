@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Noto+Sans|Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Blog - Margins, Borders And Padding</title>
+
+
+    <div id="navbar">
+        <a id="navbar-left" href="../index.html">Home</a>
+        <a id="navbar-left" href="../blog.html">Blog Posts</a>
+    
+        <h4 class="kiaOraHeading">Kia ora!</h4>
+    
+        <a id="navbar-right" href="../projects.html">Projects</a>
+        <a id="navbar-right" href="../about.html">About</a>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Kia ora! 
+        </button>
+        <div class="dropdown-content">
+            <a href="../index.html">Home</a>
+            <a href="../blog.html">Blog Posts</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../about.html">About</a>
+        </div>
+    </div>
+    <div class="navSpacer">
+    </div>
+</head>
+
+
+
+
+<body>
+    <!--  blog 3 -->
+    <div class="oddBlog">
+        <h6 id="oddBlogDate">Tuesday the 10th of September 2019</h6>
+        <h1>What is the difference between Margin, Border, and Padding?</h1>
+        <article>   
+            <p>
+                Learning how to use padding, border, margin in CSS is a very useful skill when it comes to styling a website.
+                <br><br>First let’s break it down a little. So almost everything that is on a webpage have these three things surrounding it and they act in slightly different ways to each other. It’s like they are all floating about in a 3 layered bubble - some bubbles you can see, some you can see the effects of. 
+                <br><br>Have a look at the below image to see how the content (element, thing on the webpage) is in the centre of first padding, then border and finally margin.   
+            </p>
+        </article>
+        <figure>
+            <a href="https://hackernoon.com/the-box-model-44fc2c04a935" target="_blank">
+                <img class="blogImg" src="../images/Box-model.png" alt="Image showing that the box model has 4 parts; margin, border, padding and content." title="Box Model">
+            </a>
+        </figure>
+        <article>
+            <p>
+                If you change the size of the content, the outer layers will move further out or in to match the size change. 
+                <br><br>Changing the padding size moves the border further away or closer to the content. And changing the margin size moves the border and content closer to or further away from any content on the page. These things you can’t actually see but you can see the effect they make on the page’s setup. And for the border, surprise surprise, it’s a border! The thickness, colour and style can all be changed for the border.
+            </p>
+            <p>
+                <b>Okay, now that we have that out of the way, here’s how to do it: </b>
+            </p>
+        </article>
+        <figure>
+            <img class="blogImg" src="../images/dashedBorderExample-1.png" title="Example one" alt="Picture showing example CSS">
+            <img class="blogImgLong" src="../images/dashedBorderExample-2.png" title="Example two" alt="Picture of browser showing words surrounded by a long rectancle of purple dotted lines">
+        </figure>
+        <article>
+            <p> 
+                The above images show the CSS code for a class called ‘dashedBorder’ and what the browser will display. It currently is making the borders colour indigo, the style dashed and the width 15px. 
+            </p>
+        </article>
+        <figure>
+            <img class="blogImg" src="../images/dashedBorderExample-3.png" title="Example 3" alt="Picture showing example CSS that has been altered">
+            <img class="blogImgLong" src="../images/dashedBorderExample-4.png" title="Example 4" alt="Picture of browser showing words surrounded by a small rectancle of purple dotted lines">
+        </figure>
+        <p> 
+            Now there has been some things changed to the CSS code. The above images show the addition of `padding` and `margin`in the ‘dashedBorder’ class and what the browser will now display. 
+            <br><br>`padding:` has also been added and as it hasn’t been specified what side the padding if for, CSS changes all sides to 20px. You can be more specific and enter `padding-top:`, `padding-right:`, `padding-bottom:`, `padding-left:` or a faster way is to enter `padding:` followed by the measurements in clockwise order (top, right, bottom, left) with spaces between, eg: `padding: 60px, 20px, 40px, 10px;`.
+            <br><br>The margin (`margin-left:` and `margin-right:`) now take up 30% of the screen on each side and the rest of the box (content, padding and border) take up the other 40%. You can use any sort of accepted measurement such as `px` (pixels) it doesn’t have to be percentages, this goes for padding as well. `margin` also follows the same rules as padding with `padding-top:`, `padding-right:`, `padding-bottom:`,`padding-left:` and the faster way by entering `margin:` followed by the measurements in clockwise order.
+            <br><br>There are lots of different border styles to play around with, check them out <a href="https://www.w3schools.com/css/css_border.asp" target="_blank">here!</a> 
+            <br><br>One last thing to note about `margin` is that it combines (or collapses) which means when it is next to another margin that is the same or bigger than itself it collapses into a single margin. Eg ‘margin A’ has a margin of 20px which is next to ‘margin B’ with a margin of 40px. The total margin between the 2 is now 40px.
+        </p>
+    </div>
+</body>
+
+</html>

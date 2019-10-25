@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Noto+Sans|Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Blog - Javascript, HMTL and CSS</title>
+
+
+    <div id="navbar">
+        <a id="navbar-left" href="../index.html">Home</a>
+        <a id="navbar-left" href="../blog.html">Blog Posts</a>
+    
+        <h4 class="kiaOraHeading">Kia ora!</h4>
+    
+        <a id="navbar-right" href="../projects.html">Projects</a>
+        <a id="navbar-right" href="../about.html">About</a>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Kia ora! 
+        </button>
+        <div class="dropdown-content">
+            <a href="../index.html">Home</a>
+            <a href="../blog.html">Blog Posts</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../about.html">About</a>
+        </div>
+    </div>
+    <div class="navSpacer">
+    </div>
+</head>
+
+
+
+
+<body>
+    <div class="oddBlog">
+        <h6 id="oddBlogDate">Thursday the 19th of September 2019</h6>
+        <h1>Info and stories about Javascript, HMTL and CSS</h1>
+        <article>
+            <h3>The differences between HTML and CSS</h3>
+            <p>
+                Imagine HTML and CSS are your good friends. They have aspergers and are really amazing at particular things. 
+                <br>For example, HMTL is great with creating text, images and other content and CSS is a wonder with colours, placement and other styling things and also loves curly braces. 
+                Luckily for us, they work really well with each other and are good communicators when it comes to this. 
+                <br>To balance all this amazingness out they are unable to do the things their buddy can do. 
+                Sometimes CSS jumps in and adds some colour or styling in HTMLs workbook and that's fine but HTML never writes in CSS's workbook. 
+                They both work better when there is order and things are done how they expect them to be done, no new fancy cajun tofu and butter bean dinners for them, just the usual. 
+                <br><br>
+                At first you thought they were confusing and that they didn't get on well with people very well 
+                but once you learnt that they have their special ways of doing things and accepted that this is how they are
+                your friendships bloomed and things became a lot easier, apart from the melt downs that occured for leaving out a semicolon or a bracket, that never got easier. 
+            </p>
+            <h3>Control flow and loops</h3>
+            <p>
+                Control flow is kind of like getting dressed - You put on undies first and then pants, never the other way around unless you're being a superhero in which the order goes undies, pants then undies.
+                <br><br>
+                Loops are useful for sorting through data and pulling out the information that is asked for. There are 5 different loops which do slightly different things. 
+            </p>
+            <div>
+                <p class="alignLeft">
+                    <a href="https://www.w3schools.com/js/js_loop_for.asp" target="_blank">
+                        `for` - loops through a block of code for a number of times
+                        <br>`for/in` - loops through the properties of an object
+                        <br>`for/of` - loops through the values of an iterable object
+                        <br>`while` - loops through a block of code while a specified condition is true
+                        <br>`do/while` - also loops through a block of code while a specified condition is true
+                    </a>
+                </p>
+            </div>
+            <p>
+                For example, to find out to find out what's in the pantry for breakfast you could use the following `for` statement.
+            </p>
+            <p class="alignLeft">
+                <br>var breakfastOptions = {
+                    <br>   "muesli" : 4,
+                    <br>   "peanutButter" : 17,
+                    <br>   "eggs" : 3,
+                    <br>   "honey" : 0
+                <br>}
+                <br>for (var i = 0; i < breakfastOptions.length, i++) {
+                    <br> return breakfastOptions[i];
+                <br>}
+                <br>console.log(breakfastOptions);
+            </p>
+            <h3>The DOM</h3>
+            <p>
+                The DOM stands for “Document Object Model”.
+                <br>It is a way to inspect what is going on in a webpage and is quite cool cause you can manipulate the existing code of a website. The DOM comes up on a webpage when opening right clicking and selecting 'inspect'. 
+                <br>`.getElementById()`, `getElementByClassName()` and `getElementByTagName()` allows all elements within the previously specified area (eg document) to call an element by it ID, class or tag name(eg `li` tags) and using `var`can store them using a new keyword for using in the DOM
+            </p>
+            <h3>The difference between accessing data from arrays and objects</h3>
+            <p>
+                The difference is that arrays are like ordered lists and you refer to what number (starting from 0) item you would like to access and objects are like unordered lists, they don't have numbers so you refer to what the name of the key is to access the data. 
+                <br><br>
+                Accessing data from an array goes like this:
+                <br>myArray[3] -- this locates the 4th item in the array list. 
+                <br><br>
+                Accessing an item in an object goes like this:
+                <br>myObject["pants"] -- this locates the item called "pants" from the object list. 
+                <br><br>
+                I found the following websites helpful to understand arrays and lists better:
+                </p>
+                <p  class="alignLeft">
+                <br>* <a href="https://www.codecademy.com/forum_questions/53a7ba31548c351d0c00706a" target="_blank" style="color: rgb(214, 98, 20)">Object vs Array</a> - Codecademy
+                <br>* <a href="https://www.freecodecamp.org/news/javascript-arrays-and-objects-are-just-like-books-and-newspapers-6e1cbd8a1746/" target="_blank" style="color: rgb(214, 98, 20)">JavaScript Arrays and Objects Are Just Like Books and Newspapers</a> - freeCodeCamp
+            </p>
+            <h3>What are functions and why are they useful?</h3>
+            <p>
+                Functions are a block of code that does a particular task when asked to. 
+                <br>They are useful because they make completing tasks faster and more efficient and accurate than writing them down in long form. 
+                This makes it easier to read the code and I assume makes the script run faster. Functions are a fundamental part of Javascript
+            </p>
+        </article>
+    </div>
+</body>
+
+</html>
